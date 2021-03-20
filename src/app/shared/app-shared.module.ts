@@ -1,18 +1,15 @@
 // Imports modules.
 import { IvyCarouselModule } from "angular-responsive-carousel";
-import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from '@angular/common';
 import { RouterModule } from "@angular/router";
-import { ReactiveFormsModule } from "@angular/forms";
+import { NgModule } from '@angular/core';
 
 // Imports components.
 import { NavbarAppComponent } from "../components/navbar-app/navbar-app.component";
 import { UserPresentationComponent } from '../components/user-presentation/user-presentation.component';
-import { MyProfileSectionComponent } from '../components/my-profile-section/my-profile-section.component';
-import { BadgesSectionComponent } from '../components/badges-section/badges-section.component';
 import { GeneralStickerSectionComponent } from "../components/general-sticker-section/general-sticker-section.component";
 import { GroupsSectionComponent } from '../components/groups-section/groups-section.component';
-import { EventsSectionComponent } from '../components/events-section/events-section.component';
 import { ProfileSectionsComponent } from '../components/profile-sections/profile-sections.component';
 import { UserStickerComponent } from '../components/user-sticker/user-sticker.component';
 import { UserFieldsFormComponent } from '../components/user-fields-form/user-fields-form.component';
@@ -27,9 +24,7 @@ import { CounterComponent } from "../components/counter/counter.component";
 import { WorkshopSectionComponent } from "../components/workshop-section/workshop-section.component";
 import { WorkshopCardComponent } from "../components/workshop-card/workshop-card.component";
 import { CardContentCreatorComponent } from "../components/card-content-creator/card-content-creator.component";
-import { CommunityCardComponent } from "../components/community-card/community-card.component";
 import { BadgeCardComponent } from "../components/badge-card/badge-card.component";
-import { RecentActivitiesSectionComponent } from "../components/recent-activities-section/recent-activities-section.component";
 import { DetailsUserSectionComponent } from "../components/details-user-section/details-user-section.component";
 import { GeneralStickerComponent } from "../components/general-sticker/general-sticker.component";
 import { GroupsContainerComponent } from "../components/groups-container/groups-container.component";
@@ -42,12 +37,10 @@ import { AngularMaterial } from "../material/material";
 @NgModule({
   declarations: [
     CarouselCreatorsContentComponent,
-    RecentActivitiesSectionComponent,
     GeneralStickerSectionComponent,
     DetailsUserSectionComponent,
     CardContentCreatorComponent,
     UserPresentationComponent,
-    MyProfileSectionComponent,
     CredentialsModalComponent,
     CarouselSponsorsComponent,
     GroupsContainerComponent,
@@ -57,10 +50,7 @@ import { AngularMaterial } from "../material/material";
     GeneralStickerComponent,
     UserFieldsFormComponent,
     WelcomeBannerComponent,
-    BadgesSectionComponent,
-    EventsSectionComponent,
     GroupsSectionComponent,
-    CommunityCardComponent,
     WorkshopCardComponent,
     NotificationComponent,
     UserStickerComponent,
@@ -85,12 +75,10 @@ import { AngularMaterial } from "../material/material";
     
     // Components
     CarouselCreatorsContentComponent,
-    RecentActivitiesSectionComponent,
     GeneralStickerSectionComponent,
     DetailsUserSectionComponent,
     CardContentCreatorComponent,
     UserPresentationComponent,
-    MyProfileSectionComponent,
     CredentialsModalComponent,
     CarouselSponsorsComponent,
     GroupsContainerComponent,
@@ -99,10 +87,7 @@ import { AngularMaterial } from "../material/material";
     ModalFileUploadComponent,
     UserFieldsFormComponent,
     GeneralStickerComponent,
-    CommunityCardComponent,
     WelcomeBannerComponent,
-    BadgesSectionComponent,
-    EventsSectionComponent,
     GroupsSectionComponent,
     WorkshopCardComponent,
     NotificationComponent,
