@@ -27,14 +27,14 @@ import { AppLayoutModule } from "./layouts/app-layout/app-layout.module";
 // Imports services.
 import { UserService } from './services/user/user.service';
 import { AuthService } from './services/auth/auth.service';
+import { GroupService } from './services/group/group.service';
+import { EventService } from './services/events/event.service';
 import { UploadService } from './services/upload/upload.service';
 import { WorkshopsService } from './services/workshops/workshops.service';
 import { CommunitiesService } from './services/communities/communities.service';
 import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
-import { ContentCreatorsService } from './services/contentCreators/content-creators.service';
-import { GroupService } from './services/group/group.service';
-import { EventService } from './services/events/event.service';
 import { KnowledgeAreaService } from './services/knowledgeArea/knowledge-area.service';
+import { ContentCreatorsService } from './services/contentCreators/content-creators.service';
 
 @NgModule({
   declarations: [ AppComponent ],
