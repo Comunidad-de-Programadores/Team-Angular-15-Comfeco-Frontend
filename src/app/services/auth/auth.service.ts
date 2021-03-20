@@ -9,7 +9,7 @@ import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 // Imports interfaces.
-import { LoginResponse, AuthResponse, AuthTokens, IPayloadRegister } from "./interfaces/auth.interfaces";
+import { LoginResponse, AuthResponse, AuthTokens, IPayloadRegister, Credentials } from "./interfaces/auth.interfaces";
 import { User } from "../user/interfaces/user.interfaces";
 
 // Imports helpers.
@@ -28,9 +28,9 @@ export class AuthService {
     private router: Router
   ) {}
 
-  login(email: string, password: string): Observable<LoginResponse> {
+  login(credentials: Credentials): Observable<LoginResponse> {
     const path: string = `${ this.url }/login`;
-    return this.http.post<LoginResponse>(path, { email, password });
+    return this.http.post<LoginResponse>(path, credentials);
   }
 
   register(data: IPayloadRegister): Observable<AuthResponse> {

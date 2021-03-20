@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 
 // Imports interfaces.
 import { AuthTokens, LoginResponse } from "src/app/services/auth/interfaces/auth.interfaces";
+import { User } from "src/app/services/user/interfaces/user.interfaces";
 
 // Imports helpers.
 import { WriteErrorsForm } from "src/app/helpers/WriteErrorsForm";
@@ -15,7 +16,6 @@ import { FormsValidators } from 'src/app/rules/FormsValidators';
 
 // Imports services.
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { User } from "src/app/services/user/interfaces/user.interfaces";
 
 @Component({
   selector: 'app-login-form',
@@ -25,7 +25,8 @@ import { User } from "src/app/services/user/interfaces/user.interfaces";
 export class LoginFormComponent implements OnInit {
   register: FormGroup = new FormGroup({
     email: new FormControl("", [FormsValidators.email()]),
-    password: new FormControl("", [FormsValidators.password()])
+    password: new FormControl("", [FormsValidators.password()]),
+    stayConnected: new FormControl(false)
   });
   private writeError: WriteErrorsForm = new WriteErrorsForm;
   private inputs: NodeListOf<HTMLInputElement>;
@@ -42,9 +43,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   submit(): void {
-    const { email, password } = this.register.value;
-    
-    this.authService.login(email, password).subscribe(
+    this.authService.login(this.register.value).subscribe(
       res => this.successRequest(res),
       err => this.failureRequest(err.error)
     );

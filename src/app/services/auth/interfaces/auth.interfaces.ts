@@ -6,6 +6,12 @@ export interface IPayloadRegister {
     password: string;
 }
 
+export interface Credentials {
+    email: string;
+    password: string;
+    stayConnected: boolean;
+}
+
 export interface AuthResponse {
     message: string;
 };
