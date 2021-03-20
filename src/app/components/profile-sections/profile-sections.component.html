@@ -1,4 +1,4 @@
-<div class="container py-3">
+<div class="container py-3 p-0 m-0">
   <mat-tab-group mat-stretch-tabs dynamicHeight>
     <mat-tab>
       <ng-template mat-tab-label>
@@ -8,15 +8,6 @@
       <div class="container py-3">
         <div class="row">
           <div class="col-12 p-2">  
-            <div class="container-fluid px-0">
-              <div class="card border-0 bg-white shadow">
-                <div class="card-header text-muted d-flex align-items-center w-100 border-0 bg-white">
-                  <mat-icon>schedule</mat-icon>
-                  <p class="m-0 p-0 px-2">Actividades recientes</p>
-                </div>
-              </div>
-            </div>
-
             <div *ngIf="myInsigniaSection.stickers.length" class="container-fluid px-0">
               <app-general-sticker-section
                 [section]="myInsigniaSection"

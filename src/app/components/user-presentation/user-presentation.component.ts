@@ -7,13 +7,14 @@ import { User } from 'src/app/services/user/interfaces/user.interfaces';
 
 // Imports helpers.
 import { LocalStorage } from 'src/app/helpers/LocalStorage';
+import { GeneratePicture } from 'src/app/helpers/GenerateAvatar';
 
 // Imports services.
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 // Imports components.
 import { ModalFileUploadComponent } from '../modal-file-upload/modal-file-upload.component';
-import { GeneratePicture } from 'src/app/helpers/GenerateAvatar';
+import { DetailsUser } from '../details-user-section/interfaces/details-user.interfaces';
 
 @Component({
   selector: 'app-user-presentation',
@@ -23,6 +24,10 @@ import { GeneratePicture } from 'src/app/helpers/GenerateAvatar';
 export class UserPresentationComponent {
   user: User | null = null;
   socialMedia: any[] = [];
+  detailsUser: DetailsUser = {
+    header: { icon: "info", title: "Detalles del usuario" },
+    items: []
+  };
 
   constructor(
     private generatePicture: GeneratePicture,
@@ -38,6 +43,7 @@ export class UserPresentationComponent {
       this.user = user;
       this.user.avatar = this.user.avatar ? this.user.avatar : this.generatePicture.avatar(user.nickname, 150);
       this.setSocialMedia(user);
+      this.setDetailsUser(user);
     });
   }
 
@@ -60,6 +66,16 @@ export class UserPresentationComponent {
         link: user.linkedinLink
       }
     ];
+  }
+
+  private setDetailsUser({ gender, country, birthday }: User): void {
+    Object.entries({ gender, country, birthday }).forEach(value => {
+      if (!!value[1]) this.detailsUser.items = [
+        { icon: "male", text: gender },
+        { icon: "location_on", text: country },
+        { icon: "calendar_today", text: birthday?.toString() }
+      ];
+    });
   }
 
   changeAvatar(): void {

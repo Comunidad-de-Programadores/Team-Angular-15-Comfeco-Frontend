@@ -2,11 +2,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 // Imports interfaces.
-import { User } from 'src/app/services/user/interfaces/user.interfaces';
 import { Badge } from 'src/app/services/badge/interfaces/badge.interfaces';
 import { Group } from 'src/app/services/group/interfaces/group.interfaces';
 import { Event } from 'src/app/services/events/interfaces/events.interfaces';
-import { DetailsUser } from '../details-user-section/interfaces/details-user.interfaces';
 import { StickerSection } from '../general-sticker-section/interfaces/stickerSection.interfaces';
 
 // Imports services.
@@ -22,11 +20,6 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   encapsulation: ViewEncapsulation.None
 })
 export class ProfileSectionsComponent implements OnInit {
-  detailsUser: DetailsUser = {
-    header: { icon: "info", title: "Detalles" },
-    items: []
-  };
-
   myInsigniaSection: StickerSection = {
     header: { icon: "military_tech", title: "Mis insignias" },
     stickers: []
@@ -54,8 +47,6 @@ export class ProfileSectionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.currentUser.subscribe(user => {
-      this.setDetailsUser(user);
-
       this.badgeService.getByUserId(user._id).subscribe(({ badges }) => {
         this.setMyBadgeSection(badges, user.nickname);
       });
@@ -71,16 +62,6 @@ export class ProfileSectionsComponent implements OnInit {
 
     this.badgeService.list().subscribe(res => this.badges = res.badges);
     this.eventService.list().subscribe(({ events }) => this.events = events);
-  }
-
-  private setDetailsUser({ gender, country, birthday }: User): void {
-    Object.entries({ gender, country, birthday }).forEach(value => {
-      if (!!value[1]) this.detailsUser.items = [
-        { icon: "male", text: gender },
-        { icon: "location_on", text: country },
-        { icon: "calendar_today", text: birthday?.toString() }
-      ];
-    });
   }
 
   private setMyBadgeSection(badges: Badge[], nickname: string): void {
