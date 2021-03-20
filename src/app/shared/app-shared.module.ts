@@ -1,6 +1,6 @@
 // Imports modules.
-import { IvyCarouselModule } from "angular-responsive-carousel";
 import { ReactiveFormsModule } from "@angular/forms";
+import { CarouselModule } from "ngx-owl-carousel-o";
 import { CommonModule } from '@angular/common';
 import { RouterModule } from "@angular/router";
 import { NgModule } from '@angular/core';
@@ -66,12 +66,11 @@ import { AngularMaterial } from "../material/material";
     RouterModule,
     AngularMaterial,
     ReactiveFormsModule,
-    IvyCarouselModule
+    CarouselModule
   ],
   exports: [
     AngularMaterial,
     ReactiveFormsModule,
-    IvyCarouselModule,
     
     // Components
     CarouselCreatorsContentComponent,

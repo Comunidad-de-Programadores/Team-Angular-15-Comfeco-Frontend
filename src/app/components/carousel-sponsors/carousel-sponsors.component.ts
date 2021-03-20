@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+// Import module.
+import { Component } from '@angular/core';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-carousel-sponsors',
@@ -6,6 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./carousel-sponsors.component.css']
 })
 export class CarouselSponsorsComponent {
+  options: OwlOptions = {
+    margin: 30,
+    autoWidth: true,
+    responsive: {
+      0: {
+        items: 4
+      },
+      400: {
+        items: 7
+      }
+    }
+  }
   sponsors = [
     {
       image: "https://image.flaticon.com/icons/png/512/882/882738.png",

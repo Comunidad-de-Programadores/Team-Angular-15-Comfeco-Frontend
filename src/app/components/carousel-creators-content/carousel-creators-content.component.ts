@@ -1,5 +1,9 @@
 // Imports modules.
 import { Component } from '@angular/core';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+
+// Import service.
+import { ContentCreatorsService } from 'src/app/services/contentCreators/content-creators.service';
 
 @Component({
   selector: 'app-carousel-creators-content',
@@ -7,22 +11,32 @@ import { Component } from '@angular/core';
   styleUrls: ['./carousel-creators-content.component.css']
 })
 export class CarouselCreatorsContentComponent {
-  creatorsContent = [
-    {
-      name: "Bezael Perez",
-      avatar: "https://pbs.twimg.com/profile_images/1275143505288089600/3YCxeMFu.jpg"
+  options: OwlOptions = {
+    loop: true,
+    autoplay: true,
+    margin: 15,
+    navText: ['<', '>'],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      700: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
     },
-    {
-      name: "Nicolas Schurmann",
-      avatar: "https://s.gravatar.com/avatar/a9484e5077527b9d4d8bdc7c272fc16d?size=496&default=retro"
-    },
-    {
-      name: "Diego Montoya",
-      avatar: "https://www.eafit.edu.co/thetransmediaearthconference/PublishingImages/Paginas/default/diego-montoya.png"
-    },
-    {
-      name: "Sacha Lifszync",
-      avatar: "https://avatars.githubusercontent.com/u/1213542?s=400&v=4"
-    }
-  ];
+    nav: true
+  }
+  creatorsContent = [];
+  
+  constructor(private contentCreatorService: ContentCreatorsService) {
+    this.contentCreatorService.list().subscribe(res => {
+      this.creatorsContent = res.contentCreators;
+    });
+  }
 }

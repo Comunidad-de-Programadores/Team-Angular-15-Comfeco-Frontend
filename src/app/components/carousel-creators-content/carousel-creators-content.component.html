@@ -1,26 +1,17 @@
-<div class="card border-0 bg-white">
-    <carousel
-        [arrowsOutside]="true"
-        [cellWidth]="250"
-        [autoplay]="true"
-        [height]="350"
-        [dots]="true"
-        [loop]="true"
+<owl-carousel-o [options]="options">
+    <ng-template
+        *ngFor="let item of creatorsContent"
+        carouselSlide
     >
-        <div
-            *ngFor="let item of creatorsContent"
-            class="carousel-cell p-2"
-        >
-            <div class="card border-0 bg-white shadow">
-                <img
-                    alt="Picture {{ item.name }}"
-                    [src]="item.avatar"
-                    width="100%"
-                >
-                <div class="card-body">
-                    <h2 class="card-title p-0 m-0">{{ item.name }}</h2>
-                </div>
+        <div class="card-border-0 bg-white shadow">
+            <img
+                [src]="item.avatar"
+                width="100%"
+                alt="Photo."
+            >
+            <div class="card-body">
+                <h3 class="card-title m-0">{{ item.name }}</h3>
             </div>
         </div>
-    </carousel>
-</div>
+    </ng-template> 
+</owl-carousel-o>
